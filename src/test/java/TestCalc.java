@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.example.CalculateException;
 import org.example.Main;
 import org.junit.jupiter.api.Test;
-
 public class TestCalc {
     @Test
     public void testCalcArab() throws CalculateException {
@@ -18,5 +17,13 @@ public class TestCalc {
         assertEquals("IX", Main.calc("III * III"));
         assertEquals("II", Main.calc("VI / III"));
         assertEquals("II", Main.calc("V - III"));
+    }
+    @Test
+    public void testCalcLessZero() throws CalculateException {
+        assertThrows(CalculateException.class, () ->{Main.calc("I - IV");});
+    }
+    @Test
+    public void testCalcWithNotSameTypes() throws NumberFormatException{
+        assertThrows(NumberFormatException.class, ()->{Main.calc("1 + I");});
     }
 }

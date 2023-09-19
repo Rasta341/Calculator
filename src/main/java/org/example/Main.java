@@ -5,11 +5,9 @@ public class Main {
     public static String calc(String input) throws CalculateException {
         String[] splitted = input.split(" ");
         String result = "";
-            if(RomanNumeral.values().equals(Converter.arabicToRoman(splitted[0].charAt(0)))){
-                result = RomanianExpression.calculate(splitted);
-            } else {
-                result = ArabicExpression.calculate(splitted);
-            }
+        var num = splitted[0].charAt(0);
+        if(Character.isDigit(num)) result = ArabicExpression.calculate(splitted);
+        else result = RomanianExpression.calculate(splitted);
         return result;
     }
     public static String calculate(int operandA, String operator, int operandB) {
